@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Spoiler Block</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Spoiler Block</h1>
+    <p class="sub">漫画ネタバレ自動ブロック</p>
+  </header>
+
+  <main>
+    <div id="seriesList" class="series-list">
+      <p class="empty" id="emptyMsg">作品がまだ登録されていません</p>
+    </div>
+
+    <form class="add-form" id="addForm">
+      <input
+        type="text"
+        id="nameInput"
+        placeholder="作品名 (例: ワンピース)"
+        autocomplete="off"
+        maxlength="50"
+      >
+      <button type="submit">追加</button>
+    </form>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
