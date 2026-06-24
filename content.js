@@ -1,4 +1,3 @@
-const BLURRED_CLASS = 'sb-blurred';
 const OVERLAY_CLASS = 'sb-overlay';
 const PROCESSED_ATTR = 'data-sb';
 
@@ -17,7 +16,9 @@ function shouldBlock(text) {
 function applyBlock(article) {
   if (article.querySelector('.' + OVERLAY_CLASS)) return;
 
-  article.classList.add(BLURRED_CLASS);
+  // position:relative をインラインで設定しないと overlay の inset:0 が効かない。
+  // className は React が再レンダリング時に上書きするため inline style を使う。
+  article.style.position = 'relative';
 
   const overlay = document.createElement('div');
   overlay.className = OVERLAY_CLASS;
@@ -27,7 +28,7 @@ function applyBlock(article) {
   `;
   overlay.querySelector('.sb-reveal').addEventListener('click', (e) => {
     e.stopPropagation();
-    article.classList.remove(BLURRED_CLASS);
+    article.style.position = '';
     overlay.remove();
   });
   article.appendChild(overlay);
@@ -52,9 +53,9 @@ function processAll() {
 function resetAndReprocess() {
   document.querySelectorAll(`article[${PROCESSED_ATTR}]`).forEach(a => {
     a.removeAttribute(PROCESSED_ATTR);
+    a.style.position = '';
     const overlay = a.querySelector('.' + OVERLAY_CLASS);
     if (overlay) overlay.remove();
-    a.classList.remove(BLURRED_CLASS);
   });
   processAll();
 }

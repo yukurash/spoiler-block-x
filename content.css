@@ -1,10 +1,5 @@
-article.sb-blurred {
-  position: relative !important;
-  filter: blur(10px);
-  user-select: none;
-  pointer-events: none;
-}
-
+/* blur はarticleのclassではなくoverlay自体のbackdrop-filterで実現する。
+   articleのclassはReactが再レンダリング時に上書きするため使わない。 */
 .sb-overlay {
   position: absolute;
   inset: 0;
@@ -14,6 +9,9 @@ article.sb-blurred {
   justify-content: center;
   gap: 10px;
   z-index: 9999;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(15, 17, 23, 0.55);
   pointer-events: auto;
   cursor: default;
 }
