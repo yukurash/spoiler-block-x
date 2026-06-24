@@ -2,7 +2,12 @@
   "manifest_version": 3,
   "name": "Spoiler Block for X",
   "version": "0.1.0",
-  "description": "漫画のネタバレをXのタイムラインで自動ブロック",
+  "description": "漫画の新刊・最新話のネタバレをXのタイムラインで自動ブロック。作品名を登録するだけで文字だけのツイートも画像付きも自動でぼかし表示。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": ["storage"],
   "host_permissions": [
     "https://x.com/*",
@@ -17,6 +22,11 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   }
 }
