@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 440px;
+    height: 280px;
+    overflow: hidden;
+    background: #0f1117;
+    font-family: "Hiragino Sans", "Yu Gothic UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+  }
+
+  /* background decoration */
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,92,231,0.18) 0%, transparent 70%);
+  }
+  .bg-circle.c1 { width: 320px; height: 320px; top: -80px; right: -60px; }
+  .bg-circle.c2 { width: 200px; height: 200px; bottom: -60px; left: 20px; }
+
+  .layout {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 44px;
+    gap: 36px;
+  }
+
+  /* left: text */
+  .text-col { flex: 1; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(108,92,231,0.2);
+    border: 1px solid rgba(108,92,231,0.5);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #a29bfe;
+  }
+  .badge span {
+    font-size: 11px;
+    color: #a29bfe;
+    letter-spacing: 0.04em;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #f5f6fa;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  h1 em {
+    font-style: normal;
+    color: #a29bfe;
+  }
+
+  .sub {
+    font-size: 12.5px;
+    color: #9aa0ad;
+    line-height: 1.6;
+  }
+
+  /* right: mock tweet card */
+  .mock-col {
+    flex-shrink: 0;
+    width: 168px;
+  }
+
+  .tweet-card {
+    background: #1a1d27;
+    border: 1px solid #2a2e3d;
+    border-radius: 14px;
+    padding: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tweet-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    flex-shrink: 0;
+  }
+  .name-line { flex: 1; }
+  .name-bar {
+    height: 7px;
+    border-radius: 4px;
+    background: #2a2e3d;
+    margin-bottom: 4px;
+    width: 70%;
+  }
+  .handle-bar {
+    height: 6px;
+    border-radius: 4px;
+    background: #232634;
+    width: 50%;
+  }
+
+  .content-blurred {
+    filter: blur(5px);
+  }
+  .text-lines { margin-bottom: 8px; }
+  .text-line {
+    height: 7px;
+    border-radius: 4px;
+    background: #2a2e3d;
+    margin-bottom: 5px;
+  }
+  .text-line:last-child { width: 65%; }
+
+  .img-placeholder {
+    height: 56px;
+    border-radius: 8px;
+    background: #232634;
+  }
+
+  /* overlay */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(15,17,23,0.45);
+    border-radius: 14px;
+  }
+  .overlay-label {
+    font-size: 9px;
+    color: #fff;
+    background: rgba(0,0,0,0.6);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .overlay-btn {
+    font-size: 10px;
+    color: #fff;
+    background: #6c5ce7;
+    border: none;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-circle c1"></div>
+  <div class="bg-circle c2"></div>
+
+  <div class="layout">
+    <div class="text-col">
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span>Chrome 拡張機能</span>
+      </div>
+      <h1>漫画のネタバレを<br><em>Xで自動ブロック</em></h1>
+      <p class="sub">作品名を登録するだけ。<br>文字のみのツイートも画像付きも<br>自動でぼかし表示。</p>
+    </div>
+
+    <div class="mock-col">
+      <div class="tweet-card">
+        <div class="tweet-header">
+          <div class="avatar"></div>
+          <div class="name-line">
+            <div class="name-bar"></div>
+            <div class="handle-bar"></div>
+          </div>
+        </div>
+        <div class="content-blurred">
+          <div class="text-lines">
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+          </div>
+          <div class="img-placeholder"></div>
+        </div>
+        <div class="card-overlay">
+          <div class="overlay-label">ネタバレを検出</div>
+          <button class="overlay-btn">表示する</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
