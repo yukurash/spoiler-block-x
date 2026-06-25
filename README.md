@@ -2,6 +2,13 @@
 
 漫画のネタバレをXのタイムラインで自動ブロックするChrome拡張。
 
+## インストール
+
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/eomkjpkcnfnnnallhjfjoacmaobbemie)](https://chromewebstore.google.com/detail/eomkjpkcnfnnnallhjfjoacmaobbemie)
+
+Chrome ウェブストアで公開中:
+https://chromewebstore.google.com/detail/eomkjpkcnfnnnallhjfjoacmaobbemie
+
 ## 仕組み
 
 - Xのタイムラインを監視し、登録した作品名が本文に含まれる投稿をぼかして隠す
@@ -41,6 +48,5 @@ popup.css       ポップアップのスタイル
 
 ## 今後の課題
 
-- アイコン画像の追加 (`icons/icon16.png`, `icon48.png`, `icon128.png`)
 - キーワードエイリアス対応(例: ワンピース + ONE PIECE を同一作品として扱う)
 - Firefox対応
